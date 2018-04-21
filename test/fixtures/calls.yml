@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  elevator_id: 1
+  type: 
+  floor_num: 1
+
+two:
+  elevator_id: 1
+  type: 
+  floor_num: 1
