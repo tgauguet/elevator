@@ -1,24 +1,36 @@
-# README
+# Je rêve d'une maison's technical test
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The goal is to create an elevator
+* Each floor have to buttons : up / down
+* When a call is created, the elevator goes to the requested floor
+* As long as the elevator have calls to go up and that the elevator goes up, it goes up and don't take the calls to go down
+* As long es the elevator have calls to go down and that the elevator goes down, it goes down and don't take the calls to go up
+* The elevator do not teleport
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+```
+git clone https://github.com/tgauguet/elevator.git
+cd elevator
+bundle
+rails db:create
+rails db:migrate
+rails db:seed
+```
 
-* System dependencies
+## Example
 
-* Configuration
+![alt text](https://github.com/tgauguet/elevator/master/app/assets/images/sample.png)
 
-* Database creation
+## Notes
 
-* Database initialization
+* Multiple elevators can be used at the same time
+* An event occurs when the home page is refreshed
+* When peoples goes inside the elevator, calls are made randomly
 
-* How to run the test suite
+## About
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby version 2.3.1
+* Rails version 5.2.0
+* PostrgreSQL
+* Active Record
