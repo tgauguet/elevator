@@ -21,7 +21,7 @@ rails s
 
 ## Example
 
-![alt text](https://github.com/tgauguet/elevator/blob/master/app/assets/images/sample.pngr)
+![alt text](https://github.com/tgauguet/elevator/blob/master/app/assets/images/sample.png)
 
 ## Notes
 
