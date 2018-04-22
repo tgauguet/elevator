@@ -54,8 +54,8 @@
 .informations-cntnr{
   position: absolute;
   top: 2em;
-  width: 15em;
-  left: 1em;
+  width: 10em;
+  left: 2em;
 }
 
 ul{
@@ -75,6 +75,28 @@ li{
   border-radius: .3em;
 }
 
+.informations-cntnr div p{
+  border: 1px solid transparent;
+  text-align: left;
+  font-weight: bold;
+  padding: .7em;
+  margin: 0;
+}
+
+.informations-cntnr div p span{
+  font-size: 1em;
+  color: #4834d4;
+  padding: .5em 0;
+  width: 2em;
+  text-align: center;
+  border-radius: 50%;
+  float: right;
+  margin-top: -.5em;
+  font-weight: bold;
+  background: rgba(204,204,204,.5);
+  border-bottom: 2px solid rgba(154,154,154,.5);
+}
+
 .informations-cntnr p, .informations-cntnr li{
   font-size: .9em;
 }
@@ -90,9 +112,27 @@ li{
   width: 10em;
   padding-top: .2em;
   text-align: center;
+  border-top-left-radius: .3em;
+  border-top-right-radius: .3em;
   background: rgb(35,79,122);
   bottom: 0;
   right: 0;
+}
+
+select{
+  background: white;
+  font-size: 1em;
+}
+
+input{
+  background: white;
+  padding: .5em 1em .4em 1em;
+  border-radius: .2em;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  border-bottom: 2px solid rgba(204,204,204,.5);
+  vertical-align: .2em;
 }
 
 .floor-cntnr{
@@ -134,6 +174,10 @@ body{
   height: 86vh;
 }
 
+.elevators-cntnr:first-of-type{
+  border-right: 3px dashed white;
+}
+
 .elevator{
   width: 5em;
   height: auto;
@@ -151,4 +195,19 @@ body{
 
 .floor-cntnr:last-of-type{
   border-bottom: none;
+}
+
+.refresh{
+  position: absolute;
+  background: #badc58;
+  border-bottom: 2px solid #6ab04c;
+  cursor: pointer;
+  left: 2em;
+  top: 2em;
+  padding: .3em;
+  border-radius: .3em;
+}
+
+.refresh img{
+  width: 2em;
 }

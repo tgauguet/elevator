@@ -1,15 +1,15 @@
+<%= link_to root_path, class: "refresh", method: :get do %><%= image_tag "refresh.png" %><% end %>
 <% @elevators.each do |e| %>
   <% e.programm %>
   <div class="elevators-cntnr">
     <%= render 'call/form', elevator: e %><br/>
     <div class="informations-cntnr">
       <div>
-        <p>Current floor : <%= e.position %></p>
-        <p>Going to floor : <%= e.destination %></p>
-        <p>In direction : <%= e.direction %></p>
-        <p><%= e.people_inside %> people(s) in the elevator.</p>
+        <p>FROM <span><%= e.position %></span></p>
+        <p>TO <span><%= e.destination %></span></p>
       </div>
       <div class="calls-cntnr">
+        <p><%= e.people_inside %> people(s) in the elevator.</p>
         <% if e.calls.uncomplete.blank? %>
           <li>No current calls</li>
         <% else %>
