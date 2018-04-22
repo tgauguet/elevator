@@ -12,21 +12,23 @@ The goal is to create an elevator
 ```
 git clone https://github.com/tgauguet/elevator.git
 cd elevator
-bundle
 rails db:create
 rails db:migrate
 rails db:seed
+
+rails s
 ```
 
 ## Example
 
-![alt text](https://github.com/tgauguet/elevator/blob/master/app/assets/images/sample.png)
+![alt text](https://github.com/tgauguet/elevator/blob/master/app/assets/images/sample.pngr)
 
 ## Notes
 
 * Multiple elevators can be used at the same time
 * An event occurs when the home page is refreshed
 * When peoples goes inside the elevator, calls are made randomly
+* When the elevator is empty, it goes down to floor 0
 
 ## About
 
