@@ -179,6 +179,7 @@ input{
 body{
   display: flex;
   background: rgb(246,74,113);
+  border-bottom: 50px solid #6ab04c;
 }
 
 .elevators-cntnr{
