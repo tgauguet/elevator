@@ -68,24 +68,15 @@ li{
 }
 
 .informations-cntnr div{
-  border-bottom: 2px solid #4834d4;
-  background: #686de0;
+  background: white;
+  border-bottom: 2px solid rgba(204,204,204,.5);
   padding: .4em 1em;
   margin-top: 1em;
   border-radius: .3em;
 }
 
 .informations-cntnr p, .informations-cntnr li{
-  color: white;
-}
-
-.informations-cntnr p, .informations-cntnr li{
   font-size: .9em;
-}
-
-.informations-cntnr .calls-cntnr{
-  background: #e056fd;
-  border-bottom: 2px solid #be2edd;
 }
 
 .building-cntnr{
@@ -99,14 +90,14 @@ li{
   width: 10em;
   padding-top: .2em;
   text-align: center;
-  background: #535c68;
+  background: rgb(35,79,122);
   bottom: 0;
   right: 0;
 }
 
 .floor-cntnr{
-  background: #95afc0;
-  border-bottom: 2px solid #535c68;
+  background: rgb(93,163,180);
+  border-bottom: 2px solid rgb(35,79,122);
   margin: auto;
   width: 6em;
   height: 6em;
@@ -130,6 +121,7 @@ li{
 
 body{
   display: flex;
+  background: rgb(246,74,113);
 }
 
 .elevators-cntnr{
