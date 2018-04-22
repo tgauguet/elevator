@@ -20,7 +20,7 @@ rails db:seed
 
 ## Example
 
-![alt text](https://github.com/tgauguet/elevator/master/app/assets/images/sample.png)
+![alt text](https://github.com/tgauguet/elevator/blob/master/app/assets/images/sample.png)
 
 ## Notes
 
