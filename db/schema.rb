@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_21_114212) do
+ActiveRecord::Schema.define(version: 2018_04_21_154847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "calls", force: :cascade do |t|
     t.integer "elevator_id"
-    t.string "call_type"
-    t.integer "floor_num"
+    t.string "direction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "floor_request"
+    t.boolean "completed", default: false
+    t.boolean "inside", default: false
   end
 
   create_table "elevators", force: :cascade do |t|
@@ -30,7 +31,8 @@ ActiveRecord::Schema.define(version: 2018_04_21_114212) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position"
-    t.string "moove_type"
+    t.string "direction", default: "up"
+    t.integer "destination"
   end
 
 end

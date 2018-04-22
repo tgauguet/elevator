@@ -1,12 +1,17 @@
 <%= render 'call/form' %>
 <p>_________________</p>
 <h1><%= @elevator.name.titleize %></h1>
-<p>currently at floor <%= @elevator.position %> & <%= @elevator.moove_type %></p>
+<p>currently at floor <%= @elevator.position %>, going to floor <%= @elevator.destination %> in direction <%= @elevator.direction %></p>
 <p><%= @elevator.people_inside %> peoples in the elevator.</p>
 <p>_________________</p>
 <h2>Current calls :</h2>
 <ul>
-  <% @calls.each do |call| %>
-    <li>- New people at floor <%= call.floor_num %> asked to go <%= call.call_type %> at floor <%= call.floor_request %> ||| <%= link_to "delete", [@elevator, call], method: :delete %></li>
+  <% @inside_calls.each do |call| %>
+    <li>- People inside elevator asked to go <%= call.direction %> at floor <%= call.floor_request %> ||| <%= link_to "delete", [@elevator, call], method: :delete %></li>
+  <% end %>
+</ul>
+<ul>
+  <% @outside_calls.each do |call| %>
+    <li>- People at floor <%= call.floor_request %> asked to go <%= call.direction %> <%= link_to "delete", [@elevator, call], method: :delete %></li>
   <% end %>
 </ul>

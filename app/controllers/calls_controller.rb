@@ -21,7 +21,7 @@ class CallsController < ApplicationController
   private
 
   def call_params
-    params.require(:call).permit(:call_type, :floor_num, :elevator_id)
+    params.require(:call).permit(:direction, :floor_request, :elevator_id)
   end
 
   def set_elevator
