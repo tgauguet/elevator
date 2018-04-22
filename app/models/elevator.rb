@@ -11,7 +11,6 @@ class Elevator < ApplicationRecord
 
   def programm
     set_next_destination
-    # let_people_go_inside_and_set_their_destination
     update_elevator_position
     let_people_go_inside_and_set_their_destination
     let_people_go_outside
@@ -22,19 +21,6 @@ class Elevator < ApplicationRecord
   end
 
   private
-
-  def update_elevator_position
-    pos = self.position
-
-    if self.stops.include?(pos) && pos != self.destination
-      if self.direction == "up"
-        pos += 1 unless pos == self.floor
-      elsif self.direction == "down"
-        pos -= 1 unless pos == 0
-      end
-    end
-    self.update(position: pos) unless pos == self.position
-  end
 
   def set_next_destination
     calls = self.calls.uncomplete
@@ -50,6 +36,19 @@ class Elevator < ApplicationRecord
       self.direction = self.position != 0 ? "down" : "up"
     end
     self.destination = call.floor_request if call
+  end
+
+  def update_elevator_position
+    pos = self.position
+
+    if self.stops.include?(pos) && pos != self.destination
+      if self.direction == "up"
+        pos += 1 unless pos == self.floor
+      elsif self.direction == "down"
+        pos -= 1 unless pos == 0
+      end
+    end
+    self.update(position: pos) unless pos == self.position
   end
 
   def next_call_in_current_direction
@@ -70,8 +69,8 @@ class Elevator < ApplicationRecord
 
   def let_people_go_inside_and_set_their_destination
     stops = available_stops
-    calls = self.calls.where(direction: self.direction)
-                      .where(floor_request: self.position)
+    calls = self.calls.direction_match(self.direction)
+                      .arrived(self.position)
                       .outside
                       .uncomplete
 
@@ -82,7 +81,7 @@ class Elevator < ApplicationRecord
 
   def let_people_go_outside
     calls = self.calls.inside
-                      .where(floor_request: self.position)
+                      .arrived(self.position)
 
     calls.each do |c|
       c.update(inside: false, completed: true)

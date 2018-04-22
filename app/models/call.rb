@@ -6,6 +6,8 @@ class Call < ApplicationRecord
   scope :uncomplete, -> { where(completed: false) }
   scope :inside, -> { where(inside: true) }
   scope :outside, -> { where(inside: false) }
+  scope :arrived, -> (position) { where(floor_request: position) }
+  scope :direction_match, -> (direction) { where(direction: direction) }
 
   def can_request_floor
     errors.add(:requested_floor, "will be empty.") if available_stops(self.elevator).sample.nil?

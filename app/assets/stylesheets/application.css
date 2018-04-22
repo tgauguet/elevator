@@ -22,6 +22,7 @@
 
  *, a{
    color: #130f40;
+   font-family: Helvetica;
  }
 
  a{
@@ -48,4 +49,92 @@
 .flash-cntnr{
   height: 3em;
   padding-top: 1em;
+}
+
+.informations-cntnr{
+  position: absolute;
+  top: 3em;
+  width: 25em;
+  left: 2em;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  list-style: none;
+}
+
+.informations-cntnr div{
+  border-bottom: 2px solid #4834d4;
+  background: #686de0;
+  padding: .4em 1em;
+  margin-top: 1em;
+  border-radius: .3em;
+}
+
+.informations-cntnr p, .informations-cntnr li{
+  color: white;
+}
+
+.informations-cntnr p, .informations-cntnr li{
+  font-size: .9em;
+}
+
+.informations-cntnr .calls-cntnr{
+  background: #e056fd;
+  border-bottom: 2px solid #be2edd;
+}
+
+.building{
+  width: 10em;
+  padding-top: .2em;
+  margin: auto;
+  text-align: center;
+  background: #535c68;
+}
+
+.floor-cntnr{
+  background: #95afc0;
+  border-bottom: 2px solid #535c68;
+  margin: auto;
+  width: 6em;
+  height: 6em;
+  position: relative;
+}
+
+.people-cntnr{
+  height: 6em;
+  padding: 1em;
+  width: 10em;
+  position: absolute;
+  margin-left: 8em;
+}
+
+.people-cntnr img{
+  width: 2em;
+  height: 2em;
+  display: inline-block;
+  margin-top: .3em;
+}
+
+.elevator{
+  width: 5em;
+  height: auto;
+  bottom: 0;
+  position: absolute;
+  left: .5em;
+}
+
+.floor-num{
+  color: white;
+  position: absolute;
+  margin-top: 2.5em;
+  margin-left: -1.3em;
+}
+
+.floor-cntnr:last-of-type{
+  border-bottom: none;
 }
