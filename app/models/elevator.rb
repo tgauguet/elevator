@@ -1,19 +1,19 @@
 class Elevator < ApplicationRecord
   has_many :calls
   validates_presence_of :name, :floor
-  after_initialize :set_default
+  after_initialize :set_default, except: [:update, :delete]
   attr_accessor :stops
 
   def set_default
     self.stops = (0...(self.floor + 1)).to_a
-    programm
   end
 
   def programm
     set_next_destination
-    let_people_go_inside_and_set_their_destination
-    update_elevator_position
-    let_people_go_inside_and_set_their_destination
+    unless let_people_go_inside_and_set_their_destination
+      update_elevator_position
+      let_people_go_inside_and_set_their_destination
+    end
     let_people_go_outside
   end
 
@@ -78,6 +78,7 @@ class Elevator < ApplicationRecord
     calls.each do |c|
       c.update(inside: true, floor_request: stops.sample)
     end
+    true unless calls.empty?
   end
 
   def let_people_go_outside

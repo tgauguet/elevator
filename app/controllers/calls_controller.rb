@@ -1,31 +1,21 @@
 class CallsController < ApplicationController
-  before_action :set_elevator, only: [:create, :destroy]
 
   def create
-    @call = @elevator.calls.create(call_params)
-
-    if @call.save
-      flash[:success] = "Call successfully created."
-    else
-      flash[:error] = "Error while creating new call."
-    end
-    redirect_to root_url
+    params[:call][:elevator_id] = params[:elevator_id]
+    @call = Call.create(call_params)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     @call = Call.find(params[:id])
     @call.destroy
-    redirect_to root_url
+    redirect_back(fallback_location: root_path)
   end
 
   private
 
   def call_params
     params.require(:call).permit(:direction, :floor_request, :elevator_id)
-  end
-
-  def set_elevator
-    @elevator = Elevator.find(params[:elevator_id])
   end
 
 end

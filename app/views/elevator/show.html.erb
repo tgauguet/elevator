@@ -1,4 +1,5 @@
 <% @elevators.each do |e| %>
+  <% e.programm %>
   <div class="elevators-cntnr">
     <%= render 'call/form', elevator: e %><br/>
     <div class="informations-cntnr">
@@ -6,7 +7,7 @@
         <p>Current floor : <%= e.position %></p>
         <p>Going to floor : <%= e.destination %></p>
         <p>In direction : <%= e.direction %></p>
-        <p><%= e.people_inside %> peoples in the elevator.</p>
+        <p><%= e.people_inside %> people(s) in the elevator.</p>
       </div>
       <div class="calls-cntnr">
         <% if e.calls.uncomplete.blank? %>
@@ -34,10 +35,8 @@
               <%= image_tag "elevator.png", class: "elevator" %>
             <% end %>
             <div class="people-cntnr">
-              <% e.calls.outside.uncomplete.each do |o| %>
-                <% if o.floor_request == ee %>
-                  <%= image_tag "people1.png" %>
-                <% end %>
+              <% e.calls.outside.uncomplete.where(floor_request: ee).count.times do %>
+                <%= image_tag "people1.png" %>
               <% end %>
             </div>
           </div>
