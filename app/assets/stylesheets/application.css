@@ -101,6 +101,20 @@ li{
   font-size: .9em;
 }
 
+.informations-cntnr li{
+  border-bottom: 1px dashed black;
+  font-size: .8em;
+  padding: .8em .3em;
+}
+
+.informations-cntnr li img{
+  width: 1em;
+}
+
+.informations-cntnr li:last-of-type{
+  border: none;
+}
+
 .building-cntnr{
   bottom: 0;
   position: absolute;
@@ -204,10 +218,10 @@ body{
   cursor: pointer;
   left: 2em;
   top: 2em;
-  padding: .3em;
+  padding: .5em .5em .35em .5em;
   border-radius: .3em;
 }
 
 .refresh img{
-  width: 2em;
+  width: 1.3em;
 }

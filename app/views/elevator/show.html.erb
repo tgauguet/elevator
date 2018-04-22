@@ -11,16 +11,18 @@
       <div class="calls-cntnr">
         <p><%= e.people_inside %> people(s) in the elevator.</p>
         <% if e.calls.uncomplete.blank? %>
-          <li>No current calls</li>
+          <p>No current calls</p>
         <% else %>
         <ul>
           <% e.calls.inside.uncomplete.each do |call| %>
-            <li>- People inside elevator asked to go <%= call.direction %> at floor <%= call.floor_request %> ||| <%= link_to "delete", [e, call], method: :delete %></li>
+            <li>People inside want to go <%= call.direction %> at n° <%= call.floor_request %>
+            <%= link_to image_tag("bin.png"), [e, call], method: :delete %></li>
           <% end %>
         </ul>
         <ul>
           <% e.calls.outside.uncomplete.each do |call| %>
-            <li>- People at floor <%= call.floor_request %> asked to go <%= call.direction %> <%= link_to "delete", [e, call], method: :delete %></li>
+            <li>People at floor <%= call.floor_request %> asked to go <%= call.direction %>
+            <%= link_to image_tag("bin.png"), [e, call], method: :delete %></li>
           <% end %>
         </ul>
         <% end %>
@@ -37,6 +39,9 @@
             <div class="people-cntnr">
               <% e.calls.outside.uncomplete.where(floor_request: ee).count.times do %>
                 <%= image_tag "people1.png" %>
+              <% end %>
+              <% e.calls.inside.uncomplete.where(floor_request: ee).count.times do %>
+                <%= image_tag "people1done.png" %>
               <% end %>
             </div>
           </div>
