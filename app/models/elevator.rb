@@ -11,6 +11,7 @@ class Elevator < ApplicationRecord
 
   def programm
     set_next_destination
+    let_people_go_inside_and_set_their_destination
     update_elevator_position
     let_people_go_inside_and_set_their_destination
     let_people_go_outside
