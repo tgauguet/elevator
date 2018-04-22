@@ -53,9 +53,9 @@
 
 .informations-cntnr{
   position: absolute;
-  top: 3em;
-  width: 25em;
-  left: 2em;
+  top: 2em;
+  width: 15em;
+  left: 1em;
 }
 
 ul{
@@ -88,12 +88,20 @@ li{
   border-bottom: 2px solid #be2edd;
 }
 
+.building-cntnr{
+  bottom: 0;
+  position: absolute;
+  width: 16em;
+  right: 0;
+}
+
 .building{
   width: 10em;
   padding-top: .2em;
-  margin: auto;
   text-align: center;
   background: #535c68;
+  bottom: 0;
+  right: 0;
 }
 
 .floor-cntnr{
@@ -118,6 +126,17 @@ li{
   height: 2em;
   display: inline-block;
   margin-top: .3em;
+}
+
+body{
+  display: flex;
+}
+
+.elevators-cntnr{
+  margin-top: 3.5em;
+  position: relative;
+  flex:1;
+  height: 86vh;
 }
 
 .elevator{

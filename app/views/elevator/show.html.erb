@@ -1,42 +1,48 @@
-<%= render 'call/form' %><br/>
-<!-- <h1><%#= @elevator.name.titleize %></h1> -->
-<div class="informations-cntnr">
-  <div>
-    <p>Current floor : <%= @elevator.position %></p>
-    <p>Going to floor : <%= @elevator.destination %></p>
-    <p>In direction : <%= @elevator.direction %></p>
-    <p><%= @elevator.people_inside %> peoples in the elevator.</p>
-  </div>
-  <div class="calls-cntnr">
-    <% if @elevator.calls.uncomplete.blank? %>
-      <li>No current calls</li>
-    <% end %>
-    <ul>
-      <% @inside_calls.each do |call| %>
-        <li>- People inside elevator asked to go <%= call.direction %> at floor <%= call.floor_request %> ||| <%= link_to "delete", [@elevator, call], method: :delete %></li>
-      <% end %>
-    </ul>
-    <ul>
-      <% @outside_calls.each do |call| %>
-        <li>- People at floor <%= call.floor_request %> asked to go <%= call.direction %> <%= link_to "delete", [@elevator, call], method: :delete %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-<div class="building">
-  <% @elevator.stops.reverse_each do |e| %>
-    <div class="floor-cntnr">
-      <div class="floor-num"><%= e %></div>
-      <% if e == @elevator.position %>
-        <%= image_tag "elevator.png", class: "elevator" %>
-      <% end %>
-      <div class="people-cntnr">
-          <% @outside_calls.each do |o| %>
-            <% if o.floor_request == e %>
-              <%= image_tag "people1.png" %>
-            <% end %>
+<% @elevators.each do |e| %>
+  <div class="elevators-cntnr">
+    <%= render 'call/form', elevator: e %><br/>
+    <div class="informations-cntnr">
+      <div>
+        <p>Current floor : <%= e.position %></p>
+        <p>Going to floor : <%= e.destination %></p>
+        <p>In direction : <%= e.direction %></p>
+        <p><%= e.people_inside %> peoples in the elevator.</p>
+      </div>
+      <div class="calls-cntnr">
+        <% if e.calls.uncomplete.blank? %>
+          <li>No current calls</li>
+        <% else %>
+        <ul>
+          <% e.calls.inside.uncomplete.each do |call| %>
+            <li>- People inside elevator asked to go <%= call.direction %> at floor <%= call.floor_request %> ||| <%= link_to "delete", [e, call], method: :delete %></li>
           <% end %>
+        </ul>
+        <ul>
+          <% e.calls.outside.uncomplete.each do |call| %>
+            <li>- People at floor <%= call.floor_request %> asked to go <%= call.direction %> <%= link_to "delete", [e, call], method: :delete %></li>
+          <% end %>
+        </ul>
+        <% end %>
       </div>
     </div>
-  <% end %>
-</div>
+    <div class="building-cntnr">
+      <div class="building">
+        <% e.stops.reverse_each do |ee| %>
+          <div class="floor-cntnr">
+            <div class="floor-num"><%= ee %></div>
+            <% if ee == e.position %>
+              <%= image_tag "elevator.png", class: "elevator" %>
+            <% end %>
+            <div class="people-cntnr">
+              <% e.calls.outside.uncomplete.each do |o| %>
+                <% if o.floor_request == ee %>
+                  <%= image_tag "people1.png" %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
-<%= form_for [@elevator, @elevator.calls.new] do |f| %>
-  <%= f.select :floor_request, (0...(@elevator.floor + 1)).map { |i| [i, i] } %>
+<%= form_for [elevator, elevator.calls.new] do |f| %>
+  <%= f.select :floor_request, (0...(elevator.floor + 1)).map { |i| [i, i] } %>
   <%= f.select :direction, %w( up down ) %>
   <%= f.submit "GO" %>
 <% end %>
