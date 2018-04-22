@@ -15,13 +15,13 @@
         <% else %>
         <ul>
           <% e.calls.inside.uncomplete.each do |call| %>
-            <li>People inside want to go <%= call.direction %> at n° <%= call.floor_request %>
+            <li class="inside">People inside want to go <%= call.direction %> at n° <%= call.floor_request %>
             <%= link_to image_tag("bin.png"), [e, call], method: :delete %></li>
           <% end %>
-        </ul>
+        </ul><br/>
         <ul>
           <% e.calls.outside.uncomplete.each do |call| %>
-            <li>People at floor <%= call.floor_request %> asked to go <%= call.direction %>
+            <li class="outside">People at floor <%= call.floor_request %> asked to go <%= call.direction %>
             <%= link_to image_tag("bin.png"), [e, call], method: :delete %></li>
           <% end %>
         </ul>

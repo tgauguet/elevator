@@ -226,3 +226,11 @@ body{
 .refresh img{
   width: 1.3em;
 }
+
+.inside{
+  background: #badc58;
+}
+
+.outside{
+  background: #6ab04c;
+}
